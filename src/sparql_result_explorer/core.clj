@@ -49,8 +49,7 @@
 (s/def :data/operation (set (keys dataset-ops)))
 
 (def *state
-  (atom {:title "App title"
-         :datasets {}
+  (atom {:datasets {}
          :dataset-selection []
          :data-operation :union
          :dataview nil}))
@@ -114,11 +113,6 @@
   (rebuild-dataview!))
 
 ;; Define render functions
-
-(defn title-input [{:keys [title]}]
-  {:fx/type :text-field
-   :on-text-changed #(swap! *state assoc :title %)
-   :text title})
 
 (defn coerce-bind-type
   [{:keys [type datatype value]}]
@@ -209,18 +203,14 @@
       {:fx/type :label
        :text (format "%d records" (count (:bindings dataview)))}]}]})
 
-(defn root [{:keys [title datasets dataview]}]
+(defn root [{:keys [datasets dataview]}]
   {:fx/type :stage
    :showing true
-   :title title
+   :title "SPARQL Result Explorer"
    :on-hidden (fn [_] (System/exit 0))
    :scene {:fx/type :scene
            :root {:fx/type :v-box
-                  :children [{:fx/type :label
-                              :text "Window title input"}
-                             {:fx/type title-input
-                              :title title}
-                             {:fx/type dataset-manager
+                  :children [{:fx/type dataset-manager
                               :datasets datasets
                               :dataview dataview}
                              {:fx/type dataview-table
