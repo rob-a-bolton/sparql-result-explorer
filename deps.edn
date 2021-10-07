@@ -1,0 +1,11 @@
+{:deps
+ {cheshire/cheshire {:mvn/version "5.10.0"}
+  clj-commons/spinner {:mvn/version "0.6.0"}
+  cljfx/cljfx {:mvn/version "1.7.16"}
+  clojure.java-time/clojure.java-time {:mvn/version "0.3.3"}
+  com.taoensso/timbre {:mvn/version "5.1.2"}
+  http-kit/http-kit {:mvn/version "2.3.0"}
+  jansi-clj/jansi-clj {:mvn/version "0.1.1"}
+  org.clojure/tools.cli {:mvn/version "1.0.206"}
+  org.clojure/clojure {:mvn/version "1.10.3"}}
+ :paths ["src" "classes"]}
